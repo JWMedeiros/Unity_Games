@@ -10,7 +10,7 @@ public class Dropper : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timeToWait= Random.Range(5,10);
+        timeToWait= Random.Range(2,6);
         renderer = GetComponent<MeshRenderer>();
         body = GetComponent<Rigidbody>();
         renderer.enabled = false;
