@@ -13,13 +13,43 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning = false;
+
+    bool canCollide = true;
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
     }
+    void Update()
+    {
+        DetectCheats();
+    }
+
+    void DetectCheats()
+    {
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadNextLevel();
+        }
+        else if (Input.GetKeyDown(KeyCode.C))
+        {
+            FlipCollisions();
+        }
+    }
+
+    void FlipCollisions()
+    {
+        if (canCollide)
+        {
+            canCollide = false;
+        }
+        else
+        {
+            canCollide = true;
+        }
+    }
     void OnCollisionEnter(Collision other) 
     {
-        if (isTransitioning) {return;}
+        if (isTransitioning || !canCollide) {return;}
 
         switch (other.gameObject.tag)
         {
@@ -55,7 +85,7 @@ public class CollisionHandler : MonoBehaviour
         Invoke("ReloadLevel", delay);
     }
 
-    void LoadNextLevel()
+    public void LoadNextLevel()
     {
         if (GetCurrentScene()==SceneManager.sceneCountInBuildSettings-1)
         {
