@@ -123,6 +123,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &471627570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 471627571}
+  m_Layer: 0
+  m_Name: SpawnAtRuntime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &471627571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471627570}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +261,7 @@ GameObject:
   - component: {fileID: 1149861566}
   - component: {fileID: 1149861565}
   - component: {fileID: 1149861564}
+  - component: {fileID: 1149861569}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -335,6 +367,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1149861569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1149861563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e548c2c350fc2104bb956afcce872786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deathVFX: {fileID: 3200836327345539238, guid: e7530df3765093649b1182c4813bd469, type: 3}
+  parent: {fileID: 471627571}
 --- !u!1 &1267915791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5429104740441235005, guid: bff580746714a114d96b68698145b4af, type: 3}
@@ -489,8 +535,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 523311021184358260, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: controlRollFactor
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 523311021184358260, guid: bff580746714a114d96b68698145b4af, type: 3}
       propertyPath: lasers.Array.size
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 523311021184358260, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: positionYawFactor
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 523311021184358260, guid: bff580746714a114d96b68698145b4af, type: 3}
       propertyPath: lasers.Array.data[0]
@@ -510,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2485209564944071320, guid: bff580746714a114d96b68698145b4af, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 107.6
+      value: 110.45
       objectReference: {fileID: 0}
     - target: {fileID: 2485209564944071320, guid: bff580746714a114d96b68698145b4af, type: 3}
       propertyPath: m_LocalPosition.z
@@ -548,5 +602,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Rig
       objectReference: {fileID: 0}
+    - target: {fileID: 4930968953490628779, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930968953490628779, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7982035400946256431, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 2485209565547412238}
+    - target: {fileID: 9099834179247349205, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: looping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9099834179247349205, guid: bff580746714a114d96b68698145b4af, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff580746714a114d96b68698145b4af, type: 3}
+--- !u!198 &2485209565547412238 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1104087014592132810, guid: bff580746714a114d96b68698145b4af, type: 3}
+  m_PrefabInstance: {fileID: 2485209565547412237}
+  m_PrefabAsset: {fileID: 0}
