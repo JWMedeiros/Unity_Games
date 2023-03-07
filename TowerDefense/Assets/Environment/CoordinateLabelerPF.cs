@@ -4,22 +4,30 @@ using TMPro;
 //This script to be added to the Editor folder to be ignored when building the game.
 
 //Executes in play mode and in edit mode
-//[ExecuteAlways]
+[ExecuteAlways]
 [RequireComponent(typeof(TextMeshPro))]
-public class CoordinateLabeler : MonoBehaviour
+public class CoordinateLabelerPF : MonoBehaviour
 {
     [SerializeField] Color defaultColor = Color.white;
     [SerializeField] Color blockedColor = Color.red;
+    [SerializeField] Color exploredColor = Color.yellow;
+    //Orange color, RGB between 0-1
+    [SerializeField] Color pathColor = new Color(1f, 0.5f, 0f);
 
     TextMeshPro label;
     Vector2Int coordinates = new Vector2Int();
-    Waypoint waypoint;
+    //For Pathfinding Mobs
+    GridManager gridManager;
+    //For set path mobs
+    //Waypoint waypoint;
 
+    //Waypoint removed, gridMGR added
     void Awake()
     {
+        gridManager= FindObjectOfType<GridManager>();
         label = GetComponent<TextMeshPro>();
+        //waypoint = GetComponentInParent<Waypoint>();
         label.enabled=false;
-        waypoint = GetComponentInParent<Waypoint>();
         DisplayCoordinates();   
     }
     void Update()
@@ -34,15 +42,30 @@ public class CoordinateLabeler : MonoBehaviour
         ToggleLabels();
     }
 
+    //Changed
     void SetLabelColor ()
     {
-        if (waypoint.IsPlaceable)
+        if (gridManager==null){return;}
+
+        Node node = gridManager.GetNode(coordinates);
+
+        if (node==null) {return;}
+
+        if (!node.isWalkable)
         {
-            label.color = defaultColor;
+            label.color=blockedColor;
+        }
+        else if (node.isPath)
+        {
+            label.color = pathColor;
+        }
+        else if (node.isExplored)
+        {
+            label.color= exploredColor;
         }
         else
         {
-            label.color = blockedColor;
+            label.color=defaultColor;
         }
     }
 
