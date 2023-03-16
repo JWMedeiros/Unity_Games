@@ -8,32 +8,46 @@ public class Weapon : MonoBehaviour
     [SerializeField] float range = 100f;
     [SerializeField] float damage= 20;
     [SerializeField] GameObject hitEffect;
-    AudioSource audioSource;
+    [SerializeField] Ammo ammoSlot;
+
+    [SerializeField] AudioSource shootSound;
+
+    [SerializeField] AudioSource emptySound;
 
     [SerializeField] ParticleSystem fireVFX;
 
     [SerializeField] StarterAssets.StarterAssetsInputs inputs;
 
-    private void Awake() 
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    [SerializeField] float timeBetweenShots = 0.5f;
+
+    bool canShoot=true;
 
     void Update()
     {
-        if (inputs.fire)
+        if (inputs.fire&&canShoot==true)
         {
-            Shoot();
+            StartCoroutine(Shoot());
         }
     }
 
-    void Shoot()
+    //Only shoot once and then turns input off after click, doesn't work for automatic weapons
+    IEnumerator Shoot()
     {
-        //Only shoot once and then turns input off after click, doesn't work for automatic weapons
         inputs.fire = false;
-        ProcessRaycast();
-        PlaySound();
-        PlayMuzzleFlash();
+        canShoot=false;
+        if (ammoSlot.GetCurrentAmmo()>0)
+        {
+            ProcessRaycast();
+            shootSound.Play();
+            PlayMuzzleFlash();
+            ammoSlot.ReduceCurrentAmmo();
+        }
+        else
+        {
+            emptySound.Play();
+        }
+        yield return new WaitForSeconds(timeBetweenShots);
+        canShoot=true;
     }
 
     void ProcessRaycast()
@@ -63,9 +77,5 @@ public class Weapon : MonoBehaviour
     {
         GameObject impact = Instantiate(hitEffect, hit.point, Quaternion.LookRotation(hit.normal));
         Destroy(impact,1);
-    }
-    void PlaySound()
-    {
-        audioSource.Play();
     }
 }

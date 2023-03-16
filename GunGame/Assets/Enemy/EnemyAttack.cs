@@ -11,6 +11,12 @@ public class EnemyAttack : MonoBehaviour
         target = FindObjectOfType<PlayerHealth>();
     }
 
+    public void OnDamageTaken()
+    {
+        //This can be used to do things like speed up atk animation or interrupt it if it takes dmg during attacking.
+        Debug.Log("Recieving Msg");
+    }
+
     public void AttackHitEvent()
     {
         if (target==null) {return;}
