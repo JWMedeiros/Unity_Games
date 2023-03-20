@@ -409,10 +409,12 @@ MonoBehaviour:
   hitEffect: {fileID: 6050107636620035956, guid: f340d3cebc91a70488c22c0db5603481,
     type: 3}
   ammoSlot: {fileID: 0}
+  ammoType: 1
   shootSound: {fileID: 7241883939977225483}
   emptySound: {fileID: 1891323480639338762}
   fireVFX: {fileID: 7433592742128998104}
   inputs: {fileID: 0}
+  timeBetweenShots: 0.5
 --- !u!114 &8582329878431949518
 MonoBehaviour:
   m_ObjectHideFlags: 0

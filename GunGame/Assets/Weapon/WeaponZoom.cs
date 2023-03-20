@@ -25,16 +25,31 @@ public class WeaponZoom : MonoBehaviour
         {
             if (zoomedInToggle==false)
             {
-                zoomedInToggle=true;
-                playerController.RotationSpeed=zoomSens;
-                mainCamera.m_Lens.FieldOfView=zoomedInFOV;
+                ZoomIn();
             }
             else
             {
-                zoomedInToggle=false;
-                playerController.RotationSpeed=nonZoomSens;
-                mainCamera.m_Lens.FieldOfView=fovInitial;
+                ZoomOut();
             }
         }
+    }
+
+    void OnDisable() 
+    {
+        ZoomOut();
+    }
+
+    void ZoomIn()
+    {
+        zoomedInToggle=true;
+        playerController.RotationSpeed=zoomSens;
+        mainCamera.m_Lens.FieldOfView=zoomedInFOV;
+    }
+
+    void ZoomOut()
+    {
+        zoomedInToggle=false;
+        playerController.RotationSpeed=nonZoomSens;
+        mainCamera.m_Lens.FieldOfView=fovInitial;
     }
 }

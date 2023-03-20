@@ -13,8 +13,7 @@ public class EnemyAttack : MonoBehaviour
 
     public void OnDamageTaken()
     {
-        //This can be used to do things like speed up atk animation or interrupt it if it takes dmg during attacking.
-        Debug.Log("Recieving Msg");
+        //May do something if needed during atk animation
     }
 
     public void AttackHitEvent()

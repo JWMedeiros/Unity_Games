@@ -13,7 +13,16 @@ public class EnemyHealth : MonoBehaviour
         hitpoints-=dmg;
         if (hitpoints<=0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    private void Die()
+    {
+        GetComponent<Animator>().SetBool("die", true);
+        GetComponent<EnemyAI>().enabled = false;
+        GetComponent<EnemyAttack>().enabled = false;
+        GetComponent<EnemyHealth>().enabled = false;
+        GetComponent<CapsuleCollider>().enabled = false;
     }
 }

@@ -50,6 +50,7 @@
      <Compile Include="Assets\Infima Games\Tools\Log.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\Bootstraper.cs" />
      <Compile Include="Assets\Infima Games\Tools\Looping\RLoops.cs" />
+     <Compile Include="Assets\Player\DeathHandler.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\ServiceLocator.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Camera\CameraLook.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
@@ -74,6 +75,7 @@
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\TextTimescale.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\PlayParticles.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\DebrisScript.cs" />
+     <Compile Include="Assets\Environment\UI\SceneLoader.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\Muzzle.cs" />
      <Compile Include="Assets\StarterAssets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
      <Compile Include="Assets\InputSystem\StarterAssetsInputs.cs" />
@@ -92,6 +94,7 @@
      <Compile Include="Assets\Infima Games\Tools\Looping\LoopUtilities.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\GasTankScript.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Interface\Element.cs" />
+     <Compile Include="Assets\Player\Ammo.cs" />
      <Compile Include="Assets\Enemy\EnemyAI.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\IGameModeService.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Legacy\TargetScript.cs" />
@@ -106,13 +109,13 @@
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\WeaponAttachmentManager.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Weapons\MuzzleBehaviour.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Services\GameModeService.cs" />
+     <Compile Include="Assets\Weapon\WeaponZoom.cs" />
      <Compile Include="Assets\Infima Games\Tools\Looping\Loops.cs" />
      <Compile Include="Assets\Enemy\EnemyHealth.cs" />
      <Compile Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Code\Demo\DisplayMaterialName.cs" />
-     <Compile Include="Assets\Environment\UI\SceneLoader.cs" />
-     <Compile Include="Assets\Player\DeathHandler.cs" />
-     <Compile Include="Assets\Weapon\WeaponZoom.cs" />
-     <Compile Include="Assets\Player\Ammo.cs" />
+     <Compile Include="Assets\Player\WeaponSwitcher.cs" />
+     <Compile Include="Assets\Player\AmmoType.cs" />
+     <Compile Include="Assets\Pickups\AmmoPickup.cs" />
      <None Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Art\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
      <None Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Art\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\Infima Games\Low Poly Shooter Pack - Free Sample\Art\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />

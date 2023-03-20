@@ -15,6 +15,7 @@ public class DeathHandler : MonoBehaviour
         //Stop time, bring up GO screen and cursor for player
         gameOverCanvas.enabled=true;
         Time.timeScale=0;
+        FindObjectOfType<WeaponSwitcher>().enabled=false;
         Cursor.lockState=CursorLockMode.None;
         Cursor.visible=true;
     }

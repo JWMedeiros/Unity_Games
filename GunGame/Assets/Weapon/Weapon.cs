@@ -9,6 +9,7 @@ public class Weapon : MonoBehaviour
     [SerializeField] float damage= 20;
     [SerializeField] GameObject hitEffect;
     [SerializeField] Ammo ammoSlot;
+    [SerializeField] AmmoType ammoType;
 
     [SerializeField] AudioSource shootSound;
 
@@ -22,9 +23,15 @@ public class Weapon : MonoBehaviour
 
     bool canShoot=true;
 
+    void OnEnable() 
+    {
+        //Exploitable, you can swap weapons to cancel shooting delay
+        canShoot=true;
+    }
+
     void Update()
     {
-        if (inputs.fire&&canShoot==true)
+        if (Input.GetMouseButton(0)&&canShoot==true)
         {
             StartCoroutine(Shoot());
         }
@@ -33,14 +40,14 @@ public class Weapon : MonoBehaviour
     //Only shoot once and then turns input off after click, doesn't work for automatic weapons
     IEnumerator Shoot()
     {
-        inputs.fire = false;
+        //inputs.fire = false;
         canShoot=false;
-        if (ammoSlot.GetCurrentAmmo()>0)
+        if (ammoSlot.GetCurrentAmmo(ammoType)>0)
         {
             ProcessRaycast();
             shootSound.Play();
             PlayMuzzleFlash();
-            ammoSlot.ReduceCurrentAmmo();
+            ammoSlot.ReduceCurrentAmmo(ammoType);
         }
         else
         {
