@@ -5,15 +5,16 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    [SerializeField] Transform target;
     [SerializeField] float chaseRange=5f;
     [SerializeField] float turnSpeed =5f;
     NavMeshAgent navMeshAgent;
     float distanceToTarget= Mathf.Infinity;
+    Transform target;
     bool isProvoked = false;
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+        target=FindObjectOfType<PlayerHealth>().transform;
     }
 
     void OnDrawGizmos() {
