@@ -7,10 +7,13 @@ public class EnemyAI : MonoBehaviour
 {
     [SerializeField] float chaseRange=5f;
     [SerializeField] float turnSpeed =5f;
+    [SerializeField] AudioSource aggroSFX;
+    [SerializeField] AudioSource attackSFX;
     NavMeshAgent navMeshAgent;
     float distanceToTarget= Mathf.Infinity;
     Transform target;
     bool isProvoked = false;
+
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
@@ -37,6 +40,7 @@ public class EnemyAI : MonoBehaviour
         }
         else if (distanceToTarget<=chaseRange)
         {
+            aggroSFX.Play();
             isProvoked=true;
         }
     }
@@ -63,6 +67,7 @@ public class EnemyAI : MonoBehaviour
 
     void AttackTarget()
     {
+        attackSFX.Play();
         GetComponent<Animator>().SetBool("attack", true);
     }
 
